@@ -1,8 +1,12 @@
+# Project unique files
+AtomicCards.json
+sandbox.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
 *$py.class
-AtomicCards.json
+
 # C extensions
 *.so
 

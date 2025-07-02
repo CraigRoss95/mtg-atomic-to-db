@@ -1,12 +1,14 @@
 import import_json
+from ExportScripts import export_to_csv
 welcome_message = """
 This is a tool for importing the MTGJSON AtomicCards.json database as a usable file
 Please make sure you have the database stored localy on your device in the repository this project is sitting in
 
 Please select from the following options to choose an export method:
 
-1 - Pandas DataFrame Export (pickle/pkl)
-2 - SQL server (comming soon)
+1 - Comma Seperated Value(.csv)
+2 - Pandas DataFrame Export (pickle/pkl)(comming soon)
+3 - SQL server (comming soon)
 """
 
 print (welcome_message)
@@ -21,3 +23,4 @@ print (df.head())
 match option:
     case "1":
         print ("***This is where the picke export process starts***")
+        export_to_csv.export_to_csv(df)

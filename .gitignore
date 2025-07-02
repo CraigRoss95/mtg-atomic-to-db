@@ -1,6 +1,8 @@
-# Project unique files
+# Project unique files and folders
 AtomicCards.json
 sandbox.py
+
+ExportedFiles/exportedMTGJSON.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

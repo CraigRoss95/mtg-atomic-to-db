@@ -53,28 +53,17 @@ var_types = {
 df_raw = pd.read_json("AtomicCards.json")
 df_raw.drop(["date","version"], inplace=True)
 
-# print(df_raw.iloc[30089]["data"])
-
-df = pd.DataFrame()
-for key, value in var_types.items():
-    if value in ["bool", "string", "int"]:
-        df[key] = pd.Series(dtype=value)
-    else:
-        df[key] = pd.Series(dtype="object")
-
-#set to 100 or 1000 for testing, this takes a long time to run
-for index in range(len(df_raw)):
+all_cards_list = []
+for index in (range(len(df_raw))):
     for alternate in df_raw.iloc[index]["data"]:
-        df.loc[len(df)] = alternate
-# df.loc[len(df)] = {"asciiName":"test"}
-    if (index + 1) % 1000 == 0:
-        print (f"{index + 1} cards processed")
-print (df.head()) 
-
-
-#TODO Verify each of these steps:
-#create blank dataframe with row names (using types dict)
-#loop through using "index" in json
-    # get set data using df.loc[index] see above
+        card = alternate
+        new_card = {}
+        for key, value in var_types.items():
+            if key in card:
+                new_card[key] = card[key]
+            else:
+                new_card[key] = None
+        all_cards_list.append(new_card)
     
-#export
+df = pd.DataFrame(all_cards_list)
+print(df.dtypes)

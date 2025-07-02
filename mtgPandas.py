@@ -1,53 +1,12 @@
 import pandas as pd
+import json
 
 pd.set_option('display.max_columns', None)
 
-#Verify this
-#TODO use this when creating the database columns (softly implemented for createing the dataframe)
-# Also TODO, Move this to a JSON file
-#
-var_types = {
-    "asciiName" : "string",
-    "attractionLights" : "int[]",
-    "colorIdentity" : "string[]",
-    "colors" : "string[]",
-    "convertedManaCost": "int",
-    "defense" : "string",
-    "edhrecRank" : "int",
-    "edhrecSaltiness": "int",
-    "faceConvertedManaCost": "int",
-    "faceManaValue": "int",
-    "faceName": "string",
-    "firstPrinting" : "string",
-    "foreignData": "dict",
-    "hand" : "string",
-    "hasAlternativeDeckLimit" : "bool",
-    "identifiers": "dict",
-    "isFunny" : "bool",
-    "isReserved" : "bool",
-    "keywords": "string[]",
-    "layout" : "string",
-    "leadershipSkills": "dict",
-    "legalities" : "dict",
-    "life": "string",
-    "loyalty": "string",
-    "manaCost": "string",
-    "manaValue" : "int",
-    "name" : "string",
-    "power": "string",
-    "printings": "string[]",
-    "purchaseUrls" : "dict",
-    "relatedCards": "dict",
-    "rulings": "dict",
-    "side": "string",
-    "subsets": "string[]",
-    "subtypes": "string[]",
-    "supertypes": "string[]",
-    "text": "string",
-    "toughness" : "string",
-    "type": "string",
-    "types": "string[]"}
 
+# TODO this is currently unused, use it when setting up col data types
+with open("var_types.json", "r") as file:
+    var_types = json.load(file)
 
 #Get Raw Data
 df_raw = pd.read_json("AtomicCards.json")
@@ -66,4 +25,5 @@ for index in (range(len(df_raw))):
         all_cards_list.append(new_card)
     
 df = pd.DataFrame(all_cards_list)
-print(df.dtypes)
+
+# print(df.dtypes)

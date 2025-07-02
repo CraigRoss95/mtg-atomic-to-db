@@ -45,4 +45,5 @@ def import_json():
 
     # this should be 32810
     print (f"{len(all_cards_list)} Cards loaded")
+    return df
     

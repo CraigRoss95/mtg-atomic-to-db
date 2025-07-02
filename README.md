@@ -13,8 +13,8 @@ https://mtgjson.com/downloads/all-files/#atomiccards
 - [X] <del>Fixed DTypes (needed for SQL)</del> Do this when adding to the Database (JSON or DataFrame)
 - [X] File not found error message
 - [X] Failed on CARDNAME error message
-- [ ] CMD Options
-- [ ] DataFrane export option
+- [X] CMD Options
+- [ ] DataFrame export option
 - [ ] SQL export option
 - [ ] VENV?
 - [ ] Documentation

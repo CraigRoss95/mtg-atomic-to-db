@@ -14,10 +14,13 @@ https://mtgjson.com/downloads/all-files/#atomiccards
 - [X] File not found error message
 - [X] Failed on CARDNAME error message
 - [X] CMD Options
-- [ ] .csv export option
+- [X] .csv export option
     - [ ] Fix header thing (is that a problem?)?
 - [ ] Pickel export option
 - [ ] SQL export option
-- [ ] VENV?
+- [X] requirements.txt
 - [ ] Documentation
 - [ ] "Package" for consumption
+
+## Instalation guide
+Comming soon...

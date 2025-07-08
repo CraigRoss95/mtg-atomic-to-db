@@ -3,6 +3,8 @@ AtomicCards.json
 sandbox.py
 
 ExportedFiles/exportedMTGJSON.csv
+ExportedFiles/exportedMTGJSON.pkl
+ExportedFiles/exportedMTGJSON.h5
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

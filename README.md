@@ -15,12 +15,19 @@ https://mtgjson.com/downloads/all-files/#atomiccards
 - [X] Failed on CARDNAME error message
 - [X] CMD Options
 - [X] .csv export option
-    - [ ] Fix header thing (is that a problem?)?
-- [ ] Pickel export option
+    - [X] Fix header thing (is that a problem?)
+- [X] Pickel export option
+- [X] .h5 export option
+- [X] Simple counting verification
+- [ ] Comparison verification
 - [ ] SQL export option
+- [ ] Make verification optional
 - [X] requirements.txt
 - [ ] Documentation
 - [ ] "Package" for consumption
 
 ## Instalation guide
+Comming soon...
+
+## Modes
 Comming soon...

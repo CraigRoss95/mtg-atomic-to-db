@@ -10,12 +10,24 @@ https://mtgjson.com/downloads/all-files/#atomiccards
 - [X] Create "working" branch
 - [X] Move var_types to JSON (and then get them from that file)
 - [X] Use json library to read in AtomicCards.json
-- [ ] Fixed DTypes (needed for SQL) 
-- [ ] File not found error message
-- [ ] Failed on CARDNAME error message
-- [ ] CMD Options
-- [ ] JSON export option
+- [X] <del>Fixed DTypes (needed for SQL)</del> Do this when adding to the Database (JSON or DataFrame)
+- [X] File not found error message
+- [X] Failed on CARDNAME error message
+- [X] CMD Options
+- [X] .csv export option
+    - [X] Fix header thing (is that a problem?)
+- [X] Pickel export option
+- [X] .h5 export option
+- [X] Simple counting verification
+- [ ] Comparison verification
 - [ ] SQL export option
-- [ ] VENV?
+- [ ] Make verification optional
+- [X] requirements.txt
 - [ ] Documentation
 - [ ] "Package" for consumption
+
+## Instalation guide
+Comming soon...
+
+## Modes
+Comming soon...

@@ -1,4 +1,5 @@
 import pandas as pd
+import sqlite3
 
 def verify_csv(df, filename):
     imported_df = import_csv(filename)
@@ -6,7 +7,6 @@ def verify_csv(df, filename):
     
 def import_csv(filename = "ExportedFiles/exportedMTGJSON.csv"):
     imported_df = pd.read_csv(filename)
-    imported_df = imported_df[1:]
     return imported_df
 
 
@@ -17,7 +17,6 @@ def verify_pkl(df, filename):
     
 def import_pkl(filename = "ExportedFiles/exportedMTGJSON.pkl"):
     imported_df = pd.read_pickle(filename)
-    imported_df = imported_df[1:]
     return imported_df
 
 
@@ -28,14 +27,22 @@ def verify_h5(df, filename):
     
 def import_h5(filename = "ExportedFiles/exportedMTGJSON.h5"):
     imported_df = pd.read_hdf(filename)
-    imported_df = imported_df[1:]
     return imported_df
 
-def verify_sql (df, filename):
-    print("TODO implement simpile verifiy script")
+
+
+def verify_db (df, filename, table_name = "mtgCardTable"):
+    imported_df = import_db(filename, table_name)
+    count_verification(df,imported_df)
+
+def import_db(filename, table_name):
+    conn = sqlite3.connect(filename)
+    imported_df =pd.read_sql_query(f"SELECT * FROM {table_name}",conn)
+    return imported_df
+
 
 def count_verification(df, imported_df):
-    lines_off = abs(len(imported_df) == len(df))
+    lines_off = abs(len(imported_df) - len(df))
     if(lines_off == 0):
         print("Same number of rows, data verified")
     else:

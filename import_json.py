@@ -4,11 +4,12 @@ import sys
 
 pd.set_option('display.max_columns', None)
 
-
-def import_json():
+var_types = ""
+def import_json(obj2str = False):
     print ("Loading var_types.json to object...")
     # TODO this is currently unused, use it when setting up col data types
     with open("var_types.json", "r") as file:
+        global var_types 
         var_types = json.load(file)
 
     try:
@@ -18,7 +19,7 @@ def import_json():
     except:
         print ("ERROR: Could not find file 'AtomicCards.json' make sure it is in the root directory of this repository")
         sys.exit()   
-    print ("converting JSON object to Data Frame readable content...")
+    print ("Converting JSON object to Data Frame readable content...")
     all_cards_list = []
     card_count = 0
     for json_key, json_value in raw_json["data"].items():
@@ -27,7 +28,10 @@ def import_json():
             try:
                 for key, value in var_types.items():
                     if key in card:
-                        new_card[key] = card[key]
+                        if (obj2str):
+                            new_card[key] = objects_to_strings(card[key], key,value)
+                        else:
+                            new_card[key] = card[key]
                     else:
                         new_card[key] = None
             except:
@@ -40,16 +44,23 @@ def import_json():
     print ("Converting to Pandas Data Frame")
     df = pd.DataFrame(all_cards_list)
     
-    df["colorIdentity"] = df.apply(lambda x: f"\"{x["colorIdentity"]}\"", axis=1) #param 4
     
-    df["colors"] = df.apply(lambda x: f"\"{x["colors"]}\"", axis=1) #param 5
-    
-    
-    print(df.head())
+    # print(df.head())
 
-    print(df.dtypes)
+    # print(df.dtypes)
 
     # this should be 32810
     print (f"{len(all_cards_list)} Cards loaded")
     return df
+
+def objects_to_strings(data ,key, value):
+    global var_types
+    
+    if value in {"string[]", "dict"}:
+        data = f"\"{data}\""
+        
+    return data
+    #TODO: Put automate this using var_types.json and put it in a function (make that function only happen if quote wrapping is needed (to_sql <---))
+    dtype["colorIdentity"] = f"\"{card["colorIdentity"]}\"" #param 4
+    
     

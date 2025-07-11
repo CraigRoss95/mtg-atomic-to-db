@@ -1,5 +1,5 @@
 import import_json
-from ExportScripts import export_to_csv, export_to_h5, export_to_pkl
+from ExportScripts import export_to_csv, export_to_h5, export_to_pkl, export_to_sql
 
 welcome_message = """
 This is a tool for importing the MTGJSON AtomicCards.json database as a usable file
@@ -13,15 +13,18 @@ Please select from the following options to choose an export method:
 4 - SQL server (comming soon)
 """
 
-print (welcome_message)
-possible_options = ["1", "2", "3"]
-option = input()
-while option not in possible_options:
-    print (f"please select valid input, please pick one of the following: \n{possible_options}")
+#for debugging
+option = "4"
+
+if not option:
+    print (welcome_message)
+    possible_options = ["1", "2", "3", "4"]
     option = input()
+    while option not in possible_options:
+        print (f"please select valid input, please pick one of the following: \n{possible_options}")
+        option = input()
     
 df = import_json.import_json()
-print (df.head())
 match option:
     case "1":
         export_to_csv.export_to_csv(df)
@@ -29,4 +32,6 @@ match option:
         export_to_pkl.export_to_pkl(df)
     case "3":
         export_to_h5.export_to_hdf(df)
+    case "4":
+        export_to_sql.export_to_sql(df)
 print ("Done!")  

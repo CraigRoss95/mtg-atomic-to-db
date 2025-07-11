@@ -31,7 +31,8 @@ def import_h5(filename = "ExportedFiles/exportedMTGJSON.h5"):
     imported_df = imported_df[1:]
     return imported_df
 
-
+def verify_sql (df, filename):
+    print("TODO implement simpile verifiy script")
 
 def count_verification(df, imported_df):
     lines_off = abs(len(imported_df) == len(df))

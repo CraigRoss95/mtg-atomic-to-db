@@ -19,6 +19,11 @@ https://mtgjson.com/downloads/all-files/#atomiccards
 - [X] Pickel export option
 - [X] .h5 export option
 - [X] Simple counting verification
+- [ ] Move .py files to src directory
+    - [ ] Create shortcut program in root directory (name it attomic-to-db.py or something)
+    - [ ] rename main.py to app.py
+    - [ ] find way to pass params into this shortcut script from terminal
+- [ ] Static datatypes for DataFrame in import_json.py (verify with .h5 file, it is throwing errors now )
 - [ ] Comparison verification
 - [ ] SQL export option
 - [ ] Make verification optional

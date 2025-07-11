@@ -39,7 +39,13 @@ def import_json():
         #     print(card_count)
     print ("Converting to Pandas Data Frame")
     df = pd.DataFrame(all_cards_list)
-
+    
+    df["colorIdentity"] = df.apply(lambda x: f"\"{x["colorIdentity"]}\"", axis=1) #param 4
+    
+    df["colors"] = df.apply(lambda x: f"\"{x["colors"]}\"", axis=1) #param 5
+    
+    
+    print(df.head())
 
     print(df.dtypes)
 

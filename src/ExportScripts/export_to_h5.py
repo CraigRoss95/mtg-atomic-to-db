@@ -1,5 +1,5 @@
 import pandas as pd
-from VerificationScripts import simple_verify
+from src.VerificationScripts import simple_verify
 filename = "ExportedFiles/exportedMTGJSON.h5"
 
 def export_to_hdf(df):

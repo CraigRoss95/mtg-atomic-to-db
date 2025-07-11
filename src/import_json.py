@@ -8,7 +8,7 @@ var_types = ""
 def import_json(obj2str = False):
     print ("Loading var_types.json to object...")
     # TODO this is currently unused, use it when setting up col data types
-    with open("var_types.json", "r") as file:
+    with open("Schema/var_types.json", "r") as file:
         global var_types 
         var_types = json.load(file)
 

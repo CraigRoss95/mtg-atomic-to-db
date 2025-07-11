@@ -3,7 +3,7 @@ import sqlite3
 import os
 from sqlalchemy import create_engine, BIGINT, text, FLOAT
 
-from VerificationScripts import simple_verify
+from src.VerificationScripts import simple_verify
 
 table_name = "mtgCardTable"
 filename = "ExportedFiles/exportedMTGJSON.db"

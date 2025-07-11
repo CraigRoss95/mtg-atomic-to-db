@@ -11,7 +11,7 @@ filename = "ExportedFiles/exportedMTGJSON.db"
 db_string = f"sqlite+pysqlite:///{filename}"
 engine = create_engine(db_string, future=True)
 
-def export_to_sql(df):
+def export_to_sql(df,simple_verify_arg):
     if os.path.exists(filename):
         print (f"deleting previous .db file at: \"{filename}\"")
         os.remove(filename)
@@ -24,10 +24,9 @@ def export_to_sql(df):
     ''' 
     print(f"File saved as {filename}")
     
-    print("Verifiying row count")
-    
-    
-    simple_verify.verify_db(df=df,filename=filename,table_name=table_name)
+    if (simple_verify_arg):
+        print("Verifiying row count")
+        simple_verify.verify_db(df=df,filename=filename,table_name=table_name)
     
         
         

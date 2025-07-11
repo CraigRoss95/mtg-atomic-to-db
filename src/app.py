@@ -13,10 +13,12 @@ Please select from the following options to choose an export method:
 4 - SQLite (.db file)
 5 - PostgreSQL (.sql file(??? Coming soon?))
 """
-
-def run_app():
+def run_app(mode = None, simple_verify_arg="True"):
+    
     #for debugging
-    option = "" #"5"
+    option = ""
+    if not mode == None:
+        option = str(mode)
     if not option:
         print (welcome_message)
         possible_options = ["1", "2", "3", "4"]
@@ -28,14 +30,14 @@ def run_app():
     match option:
         case "1":
             df = import_json.import_json()
-            export_to_csv.export_to_csv(df)
+            export_to_csv.export_to_csv(df,simple_verify_arg)
         case "2":
             df = import_json.import_json()
-            export_to_pkl.export_to_pkl(df)
+            export_to_pkl.export_to_pkl(df,simple_verify_arg)
         case "3":
             df = import_json.import_json()
-            export_to_h5.export_to_hdf(df)
+            export_to_h5.export_to_hdf(df,simple_verify_arg)
         case "4":
             df = import_json.import_json(obj2str=True)
-            export_to_sql.export_to_sql(df)
+            export_to_sql.export_to_sql(df,simple_verify_arg)
     print ("Done!")  

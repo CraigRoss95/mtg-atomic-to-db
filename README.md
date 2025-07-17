@@ -28,7 +28,7 @@ https://mtgjson.com/downloads/all-files/#atomiccards
     - [X] Pass mode (or export file type) through args
     - [ ] Pass Quote wrapping option (Required for some options (like SQLite))
 - [X] Static datatypes for DataFrame in import_json.py (verify with .h5 file, it is throwing errors now )
-- [ ] Combine export scripts into one script
+- [X] Combine export scripts into one script
 - [ ] Comparison verification
 - [X] SQL export option (sqlite)
 - [ ] PostgreSQL export option

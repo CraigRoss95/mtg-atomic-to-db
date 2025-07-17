@@ -6,6 +6,7 @@ ExportedFiles/exportedMTGJSON.csv
 ExportedFiles/exportedMTGJSON.pkl
 ExportedFiles/exportedMTGJSON.h5
 ExportedFiles/exportedMTGJSON.db
+ExportedFiles/exportedMTGJSON.sql
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

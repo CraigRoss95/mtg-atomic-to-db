@@ -21,7 +21,7 @@ def run_app(mode = None, simple_verify_arg="True"):
         option = str(mode)
     if not option:
         print (welcome_message)
-        possible_options = ["1", "2", "3", "4"]
+        possible_options = ["1", "2", "3", "4", "5"]
         option = input()
         while option not in possible_options:
             print (f"please select valid input, please pick one of the following: \n{possible_options}")
@@ -38,6 +38,9 @@ def run_app(mode = None, simple_verify_arg="True"):
             df = import_json.import_json()
             export_json.export_to_hdf(df,simple_verify_arg)
         case "4":
+            df = import_json.import_json(obj2str=True)
+            export_json.export_to_db(df,simple_verify_arg)
+        case "5":
             df = import_json.import_json(obj2str=True)
             export_json.export_to_sql(df,simple_verify_arg)
     print ("Done!")  

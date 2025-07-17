@@ -19,6 +19,8 @@ def export_to_csv(df,simple_verify_arg):
         print("Verifiying row count")
         simple_verify.verify_csv(df,full_file_dir)
 
+
+
 def export_to_hdf(df,simple_verify_arg):
     file_extension = "h5"
     full_file_dir = f"{file_path}/{file_name}.{file_extension}"
@@ -28,6 +30,8 @@ def export_to_hdf(df,simple_verify_arg):
     if (simple_verify_arg):
         print("Verifiying row count")
         simple_verify.verify_h5(df,full_file_dir)
+     
+     
         
 def export_to_pkl(df,simple_verify_arg):
     file_extension = "pkl"
@@ -42,9 +46,7 @@ def export_to_pkl(df,simple_verify_arg):
         
 
 
-
-
-def export_to_sql(df,simple_verify_arg):
+def export_to_db(df,simple_verify_arg):
     
     file_extension = "db"
     full_file_dir = f"{file_path}/{file_name}.{file_extension}"
@@ -69,4 +71,7 @@ def export_to_sql(df,simple_verify_arg):
     if (simple_verify_arg):
         print("Verifiying row count")
         simple_verify.verify_db(df=df,filename=full_file_dir,table_name=table_name)
-    
+
+
+def export_to_sql(df, simple_verify_arg):
+    print("TODO implment")

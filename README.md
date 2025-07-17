@@ -26,7 +26,9 @@ https://mtgjson.com/downloads/all-files/#atomiccards
 - [X] find way to pass params into this shortcut script from terminal (start with simple varify toggle)
     - [X] Make verification optional
     - [X] Pass mode (or export file type) through args
-    - [ ] Pass Quote wrapping option (Required for some options (like SQLite))
+    - [X] Pass Quote wrapping option (Required for some options (like SQLite))
+    - [ ] args use *args 
+    - [ ] args are asigned type at using type in argument constructor (see TODO)
 - [X] Static datatypes for DataFrame in import_json.py (verify with .h5 file, it is throwing errors now )
 - [X] Combine export scripts into one script
 - [ ] Comparison verification

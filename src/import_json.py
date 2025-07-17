@@ -43,13 +43,8 @@ def import_json(obj2str = False):
         #     print(card_count)
     print ("Converting to Pandas Data Frame")
     df = pd.DataFrame(all_cards_list)
-    
-    
-    # print(df.head())
 
-    # print(df.dtypes)
-
-    # this should be 32810
+    # this should be 32810 at the time of writting this
     print (f"{len(all_cards_list)} Cards loaded")
     return df
 
@@ -61,6 +56,6 @@ def objects_to_strings(data ,key, value):
         
     return data
     #TODO: Put automate this using var_types.json and put it in a function (make that function only happen if quote wrapping is needed (to_sql <---))
-    dtype["colorIdentity"] = f"\"{card["colorIdentity"]}\"" #param 4
+
     
     

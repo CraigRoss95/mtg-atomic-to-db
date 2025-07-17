@@ -13,12 +13,15 @@ Please select from the following options to choose an export method:
 4 - SQLite (.db file)
 5 - PostgreSQL (.sql file(??? Coming soon?))
 """
-def run_app(mode = None, simple_verify_arg="True"):
+
+# TODO use kwargs/ args***
+def run_app(mode = None, simple_verify_arg=True, obj2str=False ):
     
     #for debugging
     option = ""
     if not mode == None:
         option = str(mode)
+        
     if not option:
         print (welcome_message)
         possible_options = ["1", "2", "3", "4", "5"]
@@ -29,18 +32,21 @@ def run_app(mode = None, simple_verify_arg="True"):
         
     match option:
         case "1":
-            df = import_json.import_json()
+            df = import_json.import_json(obj2str=obj2str)
             export_json.export_to_csv(df,simple_verify_arg)
         case "2":
-            df = import_json.import_json()
+            df = import_json.import_json(obj2str=obj2str)
             export_json.export_to_pkl(df,simple_verify_arg)
         case "3":
-            df = import_json.import_json()
+            df = import_json.import_json(obj2str=obj2str)
             export_json.export_to_hdf(df,simple_verify_arg)
         case "4":
-            df = import_json.import_json(obj2str=True)
+            if(obj2str == False):
+                print("Setting arg 'obj2str' to True (needed for MySQL conversion)")
+                obj2str = True
+            df = import_json.import_json(obj2str=obj2str)
             export_json.export_to_db(df,simple_verify_arg)
         case "5":
-            df = import_json.import_json(obj2str=True)
+            df = import_json.import_json(obj2str=obj2str)
             export_json.export_to_sql(df,simple_verify_arg)
     print ("Done!")  

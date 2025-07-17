@@ -23,21 +23,19 @@ if __name__ == '__main__':
         description="A scraping tool for MTGJSON.com"
     )
     parser.add_argument("-c", "--count_verify", "--cv",
-                        help= "Verifies the exported file with a line count check", 
-                        type=bool,
-                        default= True,
-                        metavar="count_verify", 
-                        choices={True,False})
+                        help= "Verifies line count by importing exported file and comparing it to the original Frame", 
+                        action="store_true",
+                        default=False
+                        )
     parser.add_argument("-o", "--output", "--out",
                         help= "Sets the output file type",
                         metavar="output",
                         choices=list(itertools.chain.from_iterable(mode_map.values())))
     parser.add_argument("-s","--obj2str", "--o2s", "--object_to_string",
                         help= "wraps objects into strings with \"\"\"tripple quotes\"\"\" (MySQL does not support objects)",
-                        type=bool,
-                        default=False,
-                        metavar="obj2str",
-                        choices={True,False})
+                        action="store_true",
+                        default=False
+                        )
     args = parser.parse_args()
     
     if not args.output == None:
@@ -46,8 +44,7 @@ if __name__ == '__main__':
                 args.output = key
                 break
     print(args)
-    
-    #TODO Have this use args or kwargs
-    app.run_app(mode=args.output, simple_verify_arg=args.count_verify, obj2str=args.obj2str)
+    #TODO run command if present (Ex: only run object2str if the command is present in the kwargs)
+    app.run_app(**vars(args))
     
 

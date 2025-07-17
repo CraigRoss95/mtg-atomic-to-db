@@ -1,6 +1,6 @@
 import src.import_json as import_json
 from src import export_json
-
+from argparse import Namespace
 welcome_message = """
 This is a tool for importing the MTGJSON AtomicCards.json database as a usable file
 Please make sure you have the database stored localy on your device in the repository this project is sitting in
@@ -14,39 +14,39 @@ Please select from the following options to choose an export method:
 5 - PostgreSQL (.sql file(??? Coming soon?))
 """
 
-# TODO use kwargs/ args***
-def run_app(mode = None, simple_verify_arg=True, obj2str=False ):
-    
+def run_app(**kwargs):
+    kwargs = Namespace(**kwargs)
+
     #for debugging
-    option = ""
-    if not mode == None:
-        option = str(mode)
+    output_type = ""
+    if not kwargs.output == None:
+        output_type = str(kwargs.output)
         
-    if not option:
+    if not output_type:
         print (welcome_message)
         possible_options = ["1", "2", "3", "4", "5"]
-        option = input()
-        while option not in possible_options:
+        output_type = input()
+        while output_type not in possible_options:
             print (f"please select valid input, please pick one of the following: \n{possible_options}")
-            option = input()
+            output_type = input()
         
-    match option:
+    match output_type:
         case "1":
-            df = import_json.import_json(obj2str=obj2str)
-            export_json.export_to_csv(df,simple_verify_arg)
+            df = import_json.import_json(obj2str= kwargs.obj2str)
+            export_json.export_to_csv(df,kwargs.count_verify)
         case "2":
-            df = import_json.import_json(obj2str=obj2str)
-            export_json.export_to_pkl(df,simple_verify_arg)
+            df = import_json.import_json(obj2str=kwargs.obj2str)
+            export_json.export_to_pkl(df,kwargs.count_verify)
         case "3":
-            df = import_json.import_json(obj2str=obj2str)
-            export_json.export_to_hdf(df,simple_verify_arg)
+            df = import_json.import_json(obj2str=kwargs.obj2str)
+            export_json.export_to_hdf(df,kwargs.count_verify)
         case "4":
-            if(obj2str == False):
+            if(kwargs.obj2str == False):
                 print("Setting arg 'obj2str' to True (needed for MySQL conversion)")
-                obj2str = True
-            df = import_json.import_json(obj2str=obj2str)
-            export_json.export_to_db(df,simple_verify_arg)
+                kwargs.obj2str = True
+            df = import_json.import_json(obj2str=kwargs.obj2str)
+            export_json.export_to_db(df,kwargs.count_verify)
         case "5":
-            df = import_json.import_json(obj2str=obj2str)
-            export_json.export_to_sql(df,simple_verify_arg)
+            df = import_json.import_json(obj2str=kwargs.obj2str)
+            export_json.export_to_sql(df,kwargs.count_verify)
     print ("Done!")  

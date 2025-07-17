@@ -7,6 +7,9 @@ pd.set_option('display.max_columns', None)
 var_types = ""
 def import_json(obj2str = False):
     print ("Loading var_types.json to object...")
+    
+    if obj2str == True:
+        print ("(Objects will be converted to Strings)")
     # TODO this is currently unused, use it when setting up col data types
     with open("Schema/var_types.json", "r") as file:
         global var_types 
@@ -50,7 +53,7 @@ def import_json(obj2str = False):
 
 def objects_to_strings(data ,key, value):
     global var_types
-    
+
     if value in {"string[]", "dict"}:
         data = f"\"{data}\""
         

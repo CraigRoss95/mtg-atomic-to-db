@@ -28,13 +28,22 @@ https://mtgjson.com/downloads/all-files/#atomiccards
     - [X] Pass mode (or export file type) through args
     - [X] Pass Quote wrapping option (Required for some options (like SQLite))
     - [ ] args use *args 
-    - [ ] args are asigned type at using type in argument constructor (see TODO)
+    - [X] args are asigned type at using type in argument constructor (see TODO)
 - [X] Static datatypes for DataFrame in import_json.py (verify with .h5 file, it is throwing errors now )
 - [X] Combine export scripts into one script
 - [ ] Comparison verification
+    - [ ] Dont run if simple varification fails
+    - [ ] Implement
+    - [ ] Create new arg
 - [X] SQL export option (sqlite)
 - [ ] PostgreSQL export option
 - [X] requirements.txt
+    - [ ] update after project
+    - [ ] Verify on second computer
+- [ ] Propper logging system
+    - [ ] Progress on import to DataFrame
+    - [ ] Arg to set logs
+    - [ ] Disable Logs
 - [ ] Documentation
 - [ ] "Package" for consumption
 

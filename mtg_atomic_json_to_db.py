@@ -22,20 +22,22 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description="A scraping tool for MTGJSON.com"
     )
-    
-    # TODO use type to specify data type
-    parser.add_argument("-sv", "--simple_verify",
+    parser.add_argument("-c", "--count_verify", "--cv",
                         help= "Verifies the exported file with a line count check", 
-                        metavar="simple_verify", 
-                        choices={"True","False"})
-    parser.add_argument("-o", "--output",
+                        type=bool,
+                        default= True,
+                        metavar="count_verify", 
+                        choices={True,False})
+    parser.add_argument("-o", "--output", "--out",
                         help= "Sets the output file type",
                         metavar="output",
                         choices=list(itertools.chain.from_iterable(mode_map.values())))
-    parser.add_argument("-ots", "-o2s",  "--obj2str", "--object_to_string",
+    parser.add_argument("-s","--obj2str", "--o2s", "--object_to_string",
                         help= "wraps objects into strings with \"\"\"tripple quotes\"\"\" (MySQL does not support objects)",
+                        type=bool,
+                        default=False,
                         metavar="obj2str",
-                        choices={"True","False"})
+                        choices={True,False})
     args = parser.parse_args()
     
     if not args.output == None:
@@ -43,13 +45,9 @@ if __name__ == '__main__':
             if args.output in values:
                 args.output = key
                 break
-    #Args to non string format
-    args.simple_verify = bool_to_str(str=args.simple_verify, default = True)
-    args.obj2str = bool_to_str(str=args.obj2str, default = False)
-
-      
-
+    print(args)
     
-    app.run_app(args.output, args.simple_verify, args.obj2str)
+    #TODO Have this use args or kwargs
+    app.run_app(mode=args.output, simple_verify_arg=args.count_verify, obj2str=args.obj2str)
     
 
